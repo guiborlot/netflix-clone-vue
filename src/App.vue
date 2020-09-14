@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <section v-for="item in list" :key="item.title" class="lists">
+      <div>
+        <movie-row v-bind:title="item.title" v-bind:items="item.items"/>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Tmdb from "@/Tmdb";
+import MovieRow from "@/components/MovieRow";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    'movie-row': MovieRow,
+  },
+  data(){
+    return{
+      list: {}
+    }
+  },
+  methods: {
+    async getFilmes() {
+      // Pegando a lista total
+      this.list = await Tmdb.getHomeList();
+      console.log(this.list);
+
+    },
+
+  },
+  mounted() {
+    this.getFilmes();
+  },
+
+
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
