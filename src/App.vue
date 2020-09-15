@@ -9,32 +9,30 @@
 </template>
 
 <script>
-import Tmdb from "@/Tmdb";
+import Tmdb from './services/Tmdb'
 import MovieRow from "@/components/MovieRow";
+
 
 export default {
   name: 'App',
   components: {
     'movie-row': MovieRow,
   },
-  data(){
-    return{
-      list: {}
+  data() {
+    return {
+      list: []
     }
   },
   methods: {
-    async getFilmes() {
-      // Pegando a lista total
-      this.list = await Tmdb.getHomeList();
-      console.log(this.list);
-
-    },
-
+    async getList(){
+      const res = await Tmdb.getHomeList()
+      console.log(res);
+      this.list = res;
+    }
   },
   mounted() {
-    this.getFilmes();
-  },
-
+    this.getList();
+  }
 
 }
 </script>

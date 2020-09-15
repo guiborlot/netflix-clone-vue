@@ -1,7 +1,9 @@
 <template>
   <div>
     <h2>{{title}}</h2>
-
+    <div class="movieRow--listarea" v-for="item in items.results" :key="item.results">
+      <img src="https://image.tmdb.org/t/p/w300">
+    </div>
   </div>
 </template>
 
@@ -10,10 +12,10 @@ export default {
   name: "MovieRow",
   props: {
     title: String,
-    items: Array
+    items: Object
   },
   mounted() {
-    console.log(this.items);
+    
   }
 }
 
