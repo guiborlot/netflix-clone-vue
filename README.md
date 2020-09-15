@@ -1,16 +1,16 @@
-# netflix-clone
+# UI Netflix clone
 
-## Project setup
+## Para instalar as dependências:
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Para rodar o servidor de desenvolvimento:
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### Compilar e minificar os arquivos para produção:
 ```
 yarn build
 ```
